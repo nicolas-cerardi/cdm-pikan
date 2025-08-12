@@ -12,7 +12,7 @@ def read_sim_data(size="large"):
     # files contain 0: q 1: psi , 2: v 3: acc 4: acc_Zeldo 5: x
 
     a_list = [ '0.9','1.1', '1.5','2', '2.5', '3', '5' ]
-
+    '''
     if size=="medium":
         a_list = ["{:.0f}".format(i) if i.is_integer() else "{:.1f}".format(i) for i in np.linspace(1,3,21)]
         a_list = ["{:.1f}".format(i).replace('.0','') for i in np.arange(1,2.1,0.1)]
@@ -32,8 +32,8 @@ def read_sim_data(size="large"):
     elif size=="largelong30":
         a_list = ["{:.2f}".format(i).replace('.00','') for i in np.arange(0.91,30.01,0.01)]
         a_list = [a[:-1] if a[-1]=='0' else a for a in a_list]
-    
-    elif "custom" in size:
+    '''
+    if "custom" in size:
         #example: largecustom3.00to5.00
         bounds = size.split('custom')[1].split('to')
         if 'space01' in size:
@@ -71,22 +71,8 @@ def read_sim_data(size="large"):
         dt = (np.log10(3.0) - np.log10(0.90))/1024 #8192
         print("dt", dt)
         file_end = "run_cosmo_sim_1d/run_sim_extended_adaptnstep/output_nsteps_{0}_astart_0.9_aend_{1}_c0.txt"
-    elif 'npart2048custom' in size:
-        file_end = "run_cosmo_sim_1d/run_sim_extended_0.91_10.00_npart2048/output_nsteps_8192_astart_0.9_aend_{0}_c0.txt"
-    elif 'npart4096custom' in size:
-        file_end = "run_cosmo_sim_1d/run_sim_extended_0.91_10.00_npart4096/output_nsteps_8192_astart_0.9_aend_{0}_c0.txt"
-    elif 'nstep2048custom' in size:
-        file_end = "run_cosmo_sim_1d/run_sim_extended_0.91_10.00_nstep2048/output_nsteps_2048_astart_0.9_aend_{0}_c0.txt"
-    elif 'nstep4096custom' in size:
-        file_end = "run_cosmo_sim_1d/run_sim_extended_0.91_10.00_nstep4096/output_nsteps_4096_astart_0.9_aend_{0}_c0.txt"
-    elif 'adaptdt_c00' in size:
-        file_end = "run_cosmo_sim_1d/run_sim_adaptdt_c00/output_nsteps_{0}_astart_0.01_aend_{1}_c0.txt"
-    elif 'adaptdt_c01' in size:
-        file_end = "run_cosmo_sim_1d/run_sim_adaptdt_c01/output_nsteps_{0}_astart_0.01_aend_{1}_c0.1.txt"
-    elif 'adaptdt_c04' in size:
-        file_end = "run_cosmo_sim_1d/run_sim_adaptdt_c04/output_nsteps_{0}_astart_0.01_aend_{1}_c0.4.txt"
     elif 'adaptdt_seq' in size:
-        file_end = "run_cosmo_sim_1d/run_sim_adaptdt_seq1024/output_nsteps_{0}_astart_0.5_aend_{1}_c0.txt"
+        file_end = "../nbody_data/run_sim_adaptdt_seq1024/output_nsteps_{0}_astart_0.5_aend_{1}_c0.txt"
     data_out = []
 
     for i,a in enumerate(a_list):
