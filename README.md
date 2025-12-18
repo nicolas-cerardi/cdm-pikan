@@ -24,3 +24,19 @@ python3 train_dm1d_jaxKAN_sequential --flagfile=../configs/jaxkan_sequential_pde
 ## Comparison with N-body :mag_right:
 
 ![Simulation animation](figures/pikan_and_nbody.gif)
+
+## Citation
+
+If you use this code in your research please cite the corresponding [paper](https://arxiv.org/abs/2512.11795).
+BibTex:
+```
+@article{cerardi2025solvingcosmologicalvlasovpoissonequations,
+      title={Solving the Cosmological Vlasov-Poisson Equations with Physics-Informed Kolmogorov-Arnold Networks}, 
+      author={Nicolas Cerardi and Emma Tolley and Ashutosh Mishra},
+      year={2025},
+      eprint={2512.11795},
+      archivePrefix={arXiv},
+      primaryClass={astro-ph.CO},
+      url={https://arxiv.org/abs/2512.11795}, 
+}
+ ```
